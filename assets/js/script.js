@@ -91,13 +91,20 @@ function getHotel(cityName) {
     console.log(response);
     var hotelNumber = [];
     var hotelAirport = [];
+    var latitude = [];
+    var longitude = [];
     for (let i = 0; i < 1; i = i + 1) {
       // console.log (response[0].nr_hotels)
       hotelNumber.push(response[0].nr_hotels)
-      hotelAirport.push(response[4].name)
+      hotelAirport.push(response[0].name)
+      latitude.push(response[0].latitude)
+      longitude.push(response[0].longitude)
     }
-    $('.hotel').html("<h3>" + "Number Of Hotels : " + hotelNumber + "</h3>");
-    $('.country').html("<h3>" + "The Closest Atrraction is : " + hotelAirport + "</h3>");
+    $('.latitude').html("<p>" + "The Latitude is : " + latitude + "</p>");
+    $('.longitude').html("<p>" + "The Longitude is : " + longitude + "</p>");
+    $('.hotel').html("<p>" + "Number Of Hotels : " + hotelNumber + "</p>");
+    $('.country').html("<p>" + "The Closest Atrraction is : " + hotelAirport + "</p>");
+    
   });
 }
 
@@ -109,5 +116,4 @@ searchBtnEl.addEventListener('click', function (e) {
   getFood(inputEl.value);
   getHotel(inputEl.value);
 })
-
 
